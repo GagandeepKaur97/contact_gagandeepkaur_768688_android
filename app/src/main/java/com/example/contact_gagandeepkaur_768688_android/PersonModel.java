@@ -10,6 +10,7 @@ public class PersonModel implements Serializable {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
+
         this.phone = phone;
         this.address = address;
 
@@ -26,6 +27,7 @@ public class PersonModel implements Serializable {
     public String getlName() {
         return lName;
     }
+
 
     public String getAddress() {
         return address;

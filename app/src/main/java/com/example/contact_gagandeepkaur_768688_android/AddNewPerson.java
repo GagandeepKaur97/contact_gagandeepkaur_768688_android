@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class AddNewPerson extends AppCompatActivity {
-    EditText etFirstName, etLastName, etAddress, etPhone;
-    String fName, lName, address, phone;
+    EditText etFirstName, etLastName,  etAddress, etPhone;
+    String fName, lName,  address, phone;
     private DatabaseHelper mDatabaseHelper;
     private PersonModel personModel;
 
@@ -28,7 +28,7 @@ public class AddNewPerson extends AppCompatActivity {
         Intent intent = getIntent();
         personModel = (PersonModel) intent.getSerializableExtra(MainActivity.SELECTED_PERSON);
 
-        if(personModel != null){
+        if (personModel != null) {
             etFirstName.setText(personModel.getfName());
             etLastName.setText(personModel.getlName());
             etAddress.setText(personModel.getAddress());
@@ -44,11 +44,11 @@ public class AddNewPerson extends AppCompatActivity {
                 address = etAddress.getText().toString().trim();
 
 
-                if(validations()){
-                    if(personModel != null){
+                if (validations()) {
+                    if (personModel != null) {
 
                         //update existing person
-                        if(mDatabaseHelper.updatePerson(personModel.getId(), fName, lName, phone, address)){
+                        if (mDatabaseHelper.updatePerson(personModel.getId(), fName, lName, phone, address)) {
                             Toast.makeText(AddNewPerson.this, fName + " updated successfully!!", Toast.LENGTH_SHORT).show();
                             onBackPressed();
                         } else
@@ -56,7 +56,7 @@ public class AddNewPerson extends AppCompatActivity {
                     } else {
 
                         //add new person
-                        if (mDatabaseHelper.addPerson(fName, lName, phone, address)) {
+                        if (mDatabaseHelper.addPerson(fName, lName,  phone, address)) {
                             Toast.makeText(AddNewPerson.this, fName + " added successfully!!", Toast.LENGTH_SHORT).show();
                             onBackPressed();
                         } else
@@ -68,37 +68,38 @@ public class AddNewPerson extends AppCompatActivity {
         });
 
 
-
     }
 
-    private boolean validations(){
+    private boolean validations() {
 
-        if(fName.isEmpty()){
+        if (fName.isEmpty()) {
             etFirstName.setError("First name is required");
             etFirstName.requestFocus();
             return false;
-        } else{
-            if(lName.isEmpty()){
+        } else {
+            if (lName.isEmpty()) {
                 etLastName.setError("Last name is required");
                 etLastName.requestFocus();
                 return false;
-            } else{
-                if(address.isEmpty()){
-                    etFirstName.setError("First name required");
-                    etFirstName.requestFocus();
-                    return false;
-                } else{
-                    if(phone.isEmpty()){
+
+                } else {
+                    if (address.isEmpty()) {
                         etFirstName.setError("First name required");
                         etFirstName.requestFocus();
                         return false;
-                    }
-                    else{
-                        return true;
+                    } else {
+                        if (phone.isEmpty()) {
+                            etFirstName.setError("First name required");
+                            etFirstName.requestFocus();
+                            return false;
+                        } else {
+                            return true;
+                        }
                     }
                 }
             }
-        }
 
+        }
     }
-}
+
+
