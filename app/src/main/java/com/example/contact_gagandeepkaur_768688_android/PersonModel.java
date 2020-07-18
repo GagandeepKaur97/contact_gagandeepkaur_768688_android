@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 public class PersonModel implements Serializable {
     private int id;
-    private String fName, lName, address, phone;
+    private String fName, lName,Email, address, phone;
 
-    public PersonModel(int id, String fName, String lName, String phone, String address) {
+    public PersonModel(int id, String fName, String lName,String Email, String phone, String address) {
         this.id = id;
         this.fName = fName;
         this.lName = lName;
-
+        this.Email = Email;
         this.phone = phone;
         this.address = address;
 
@@ -28,6 +28,7 @@ public class PersonModel implements Serializable {
         return lName;
     }
 
+    public String getEmail(){return Email;}
 
     public String getAddress() {
         return address;

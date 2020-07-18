@@ -16,7 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_FIRST_NAME = "first_name";
     private static final String COLUMN_LAST_NAME = "last_name";
-
+    private static final String COLUMN_Email= "Email";
     private static final String COLUMN_PHONE = "phone";
     private static final String COLUMN_ADDRESS = "address";
 
@@ -31,6 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_ID + " INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_FIRST_NAME + " varchar(200) NOT NULL, " +
                 COLUMN_LAST_NAME + " varchar(200) NOT NULL, " +
+                COLUMN_Email + " varchar(200) NOT NULL, " +
                 COLUMN_PHONE + " varchar(200) NOT NULL, " +
                 COLUMN_ADDRESS + " varchar(200) NOT NULL);";
         db.execSQL(sql);
@@ -43,14 +44,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    boolean addPerson(String fName, String lName,  String phone, String address){
+    boolean addPerson(String fName, String lName,String Email,  String phone, String address){
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_FIRST_NAME, fName);
         cv.put(COLUMN_LAST_NAME, lName);
-
+        cv.put(COLUMN_Email,Email);
         cv.put(COLUMN_PHONE, phone);
         cv.put(COLUMN_ADDRESS, address);
 
@@ -62,13 +63,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME, null);
     }
 
-    boolean updatePerson(int id, String fName, String lName, String phone, String address){
+    boolean updatePerson(int id, String fName, String lName,String Email, String phone, String address){
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_FIRST_NAME, fName);
         cv.put(COLUMN_LAST_NAME, lName);
-
+        cv.put(COLUMN_Email,Email);
         cv.put(COLUMN_PHONE, phone);
         cv.put(COLUMN_ADDRESS, address);
 

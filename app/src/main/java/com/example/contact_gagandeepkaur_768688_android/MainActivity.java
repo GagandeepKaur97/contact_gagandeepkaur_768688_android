@@ -147,21 +147,21 @@ public class MainActivity extends AppCompatActivity {
                     if (!etSearch.getText().toString().isEmpty()) {
 
                         if (mDatabaseHelper.deletePerson(searchList.get(position).getId())){
-                            Toast.makeText(MainActivity.this, "Person deleted successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Person deleted ", Toast.LENGTH_SHORT).show();
                             searchList.remove(position);
                             personAdapter.notifyDataSetChanged();
                             loadAllPersons();
                         }
                         else
-                            Toast.makeText(MainActivity.this, "Error in deletion...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Error ", Toast.LENGTH_SHORT).show();
                     } else {
 
                         //DataBase delete code
                         if (mDatabaseHelper.deletePerson(personList.get(position).getId())) {
-                            Toast.makeText(MainActivity.this, "Person deleted successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Person deleted ", Toast.LENGTH_SHORT).show();
                             loadAllPersons();
                         } else
-                            Toast.makeText(MainActivity.this, "Error in deletion...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Error ", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -185,7 +185,8 @@ public class MainActivity extends AppCompatActivity {
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getString(3),
-                        cursor.getString(4)
+                        cursor.getString(4),
+                        cursor.getString(5)
 
 
                 ));
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
             // show items in a listView
             // we use a custom adapter to show employees
 
-            Log.i(TAG, "loadEmployees: 2 " + personList);
+
 
             if(etSearch.getText().toString().isEmpty()) {
                 personAdapter = new PersonAdapter(this, personList);

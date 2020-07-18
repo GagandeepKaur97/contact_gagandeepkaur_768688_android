@@ -38,14 +38,14 @@ public class PersonAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(R.layout.adapter_person_row, parent, false);
 
-        TextView tvName,  tvPhone, tvAddress;
+        TextView tvName,tvEmail,  tvPhone, tvAddress;
 
         tvName = convertView.findViewById(R.id.tv_name);
         tvPhone = convertView.findViewById(R.id.tv_phone);
         tvAddress = convertView.findViewById(R.id.tv_address);
-
+        tvEmail = convertView.findViewById(R.id.tv_Email);
         tvName.setText(modelList.get(position).getfName() + " " + modelList.get(position).getlName());
-
+        tvEmail.setText(modelList.get(position).getEmail());
         tvPhone.setText(modelList.get(position).getPhone());
         tvAddress.setText(modelList.get(position).getAddress());
 
