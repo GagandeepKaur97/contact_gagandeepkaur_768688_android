@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SELECTED_PERSON = "selectedPerson";
 
     PersonAdapter personAdapter;
-    TextView tvNoItem;
+    TextView tvNoItem, tvSize;
     EditText etSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         tvNoItem = findViewById(R.id.tv_no_list);
         listView = findViewById(R.id.listview);
         etSearch = findViewById(R.id.et_search);
-
+        tvSize = findViewById(R.id.size);
         personList = new ArrayList<>();
         mDatabaseHelper = new DatabaseHelper(this);
 
@@ -198,6 +198,8 @@ public class MainActivity extends AppCompatActivity {
             // we use a custom adapter to show employees
 
 
+            //System.out.println("total:--- " + personList.size());
+            tvSize.setText("Total Contacts (" + personList.size() + ")");
 
             if(etSearch.getText().toString().isEmpty()) {
                 personAdapter = new PersonAdapter(this, personList);
